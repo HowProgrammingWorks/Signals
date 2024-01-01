@@ -1,2 +1,1 @@
-# Signals
-Asynchronous Signals
+# Asynchronous Signals
