@@ -3,10 +3,19 @@
 const { signal, computed, effect } = require('@preact/signals-core');
 
 const count = signal(100);
-console.log(`Count initial: ${count.value}`);
+const double = computed(() => count.value * 2);
+console.log({
+  initial: {
+    count: count.value,
+    double: double.value,
+  },
+});
 
 const dispose = effect(() => {
-  console.log(`Count changed: ${count.value}`);
+  console.log({
+    count: count.value,
+    double: double.value,
+  });
 });
 
 count.value = 200;
