@@ -3,23 +3,16 @@ import { signal, computed } from '@angular/core';
 // npm install @angular/core --save
 // yarn add @angular/core
 
-const name = signal('Marcus Aurelius');
-console.log('Name 1: ' + name());
+const count = signal(100);
+console.log(`Count 1: ${count()}`);
 
-name.set('Verus');
-console.log('Name 2: ' + name());
+count.set(200);
+console.log(`Count 2: ${count()}`);
 
-name.update((previous) => 'Marcus Aurelius ' + previous);
-console.log('Name 3: ' + name());
+count.update((prev) => prev + 50);
+console.log(`Count 3: ${count()}`);
 
-const emperor = computed(() => {
-  let fullName = name();
-  if (fullName.includes('Verus')) {
-    return fullName.replace('Verus', 'Antoninus');
-  }
-  return fullName + ' Augustus';
-});
-console.log('Name 4: ' + emperor());
+const num = signal(1000);
 
-name.set(emperor());
-console.log('Name 5: ' + emperor());
+const total = computed(() => num() + count());
+console.log(`Total: ${total()}`);
