@@ -9,7 +9,7 @@ console.log(`Count 1: ${count.value}`);
 count.value = 200;
 console.log(`Count 2: ${count.value}`);
 
-count.value = count.value + 50;
+count.value += 50;
 console.log(`Count 3: ${count.value}`);
 
 const num = signal(1000);

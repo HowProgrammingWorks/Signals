@@ -2,8 +2,10 @@
 
 const signal = (value) => {
   const box = { value };
-  const getter = () =>
-    typeof box.value === 'function' ? box.value() : box.value;
+  const getter = () => {
+    if (typeof box.value !== 'function') return box.value;
+    return box.value();
+  };
   getter.set = (value) => (box.value = value);
   getter.update = (callback) => (box.value = callback(box.value));
   return getter;
